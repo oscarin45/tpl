@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="es" class="no-js"><head><title>Template Codeigniter Docs</title><!--	Esta libreria ha sido desarrollado por RicAg.
+E-mail: gemral_cracken@yahoo.com.mx
+León, Guanajuato--><meta charset="utf-8"><meta name="description" content="{META}"><link rel="stylesheet" href="main.css" type="text/css" media="all"></head><body class="s12 bc3"><div id="container"><h1>Welcome to CodeIgniter Template! TPLObdc</h1><div id="body"><p>This documentation is for Codeigniter library</p><p>Files needed</p><ul><li>application/libraries/tpl.php</li><li>application/libraries/jsmin.php</li><li>application/libraries/cssmin.php</li></ul><p>The required setup is:</p><code>application/controllers/config/autoload.php<pre>$autoload['helper'] = array('url');
+$autoload['libraries'] = array('tpl');</pre></code><p>Example applied to a controller:</p><code> <pre>class Welcome extends CI_Controller {
+function __construct(){
+	parent::__construct();
+		$this->load->library('tpl', array('DIR'=>base_url()));
+	}
+function index(){
+|
+	$this->tpl
+	->set('TITLE','Welcome to CodeIgniter')
+	->set_view('VIEW','doc')// ->set_view('VIEW','doc',array(),'parser/view') #Load view
+	->set_js('HEAD_JS','js/main.js')
+	->set_css('HEAD_CSS','css/normalize.css')
+	->site()
+	;
+	}
+}</pre></code><p> </p><h2>Function Reference</h2><h3>$this->load->library('tpl', array())</h3><p>Load the library and can add variables to the view </p><code>$this->load->library('tpl', array(<b>'DIR'</b>=>base_url()));</code><p>HTML VIEW</p><code>&lt;img src="<b>{DIR}</b>image/1.jpg" alt=""/></code><h3>$this->tpl->load()</h3><p>The template is applied to the specified view, default is "site.php"</p><code>$this->tpl->load('welcome_message')</code><h3>$this->tpl->view()</h3><p>How to load variables by "load-> view" or "parser-> parse" Applies</p><code>$this->tpl->view('parser') //parser o view</code><h3>$this->tpl->set()</h3><p>Apply to replace variables in the template</p><code>$this->tpl->set('TITLE','Welcome to CodeIgniter')</code><code><pre>$this->tpl->set(array(
+	'DOC_TITLE'	=> 'View Documentation',
+	'DOC_HTML'	=> '/docs/index.html'
+	))</pre></code><h3>$this->tpl->set_view()</h3><p>Preloading views into templates replacing the variables listed</p><code>$this->tpl->set_view('VIEW','doc')</code><code>$this->tpl->set_view('VIEW','doc',array(),'parser') //parser or view Mode</code><code><pre>$this->tpl->set_view(array(
+	'view1'=>'doc1',
+	'view1'=>'doc2',
+	'view1'=>'doc3',
+	'view4'=>array('doc4',array(),'parser') //parser or view Mode
+	))</pre></code><h3>$this->tpl->set_js()</h3><p>Javascript files are added to replace a variable in either compressed into one file or individually generated</p><code>$this->tpl->set_js('HEAD_JS','js/vendor/modernizr-2.6.2.min.js')</code><code> <pre>$this->tpl->set_js('JS',array(
+	'js/plugins.js',
+	'js/main.js'
+	),true)//TRUE = compress file</pre></code><h3>$this->tpl->set_css()</h3><p>CSS files are added to replace a variable in either compressed into one file or individually generated</p><code><pre>$this->tpl->set_css('HEAD_CSS',array(
+	'css/normalize.css',
+	'css/main.css'
+	),true)//TRUE = compress file</pre></code><h3>$this->tpl->site()</h3><p>Rendering template site</p></div></div></body></html>
