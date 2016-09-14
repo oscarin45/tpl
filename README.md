@@ -1,4 +1,4 @@
-# Welcome to CodeIgniter Template! TPLObdc
+# TPL Codeigniter
 
 This documentation is for Codeigniter library
 
